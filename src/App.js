@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 
 import Footer from './components/Footer';
 import Navbar from './components/Navbar';
-import Routes from './components/Routes';
+import SearchRoutes from './components/SearchRoutes';
 
 const App = () => {
     const [darkTheme, setDarkTheme] = useState(false);
 
     return (
-        <div className={darkTheme ? 'dark' : ''}>
+        <main className={darkTheme ? 'dark' : null}>
             <div className="bg-gray-100 dark:bg-gray-900 dark:text-gray-200 min-h-screen">
                 <Navbar darkTheme={darkTheme} setDarkTheme={setDarkTheme} />
-                <Routes />
+                <SearchRoutes />
                 <Footer />
             </div>
-        </div>
+        </main>
     );
 };
 
