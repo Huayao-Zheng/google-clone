@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
-import SearchResults from './SearchResults';
-import NoMatch from './NoMatch';
+import SearchResults from '../components/SearchResults';
+import NoMatch from '../components/NoMatch';
 
 const SearchRoutes = () => {
     return (
