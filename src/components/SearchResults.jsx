@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import ReactPlayer from 'react-player';
 import { useLocation } from 'react-router-dom';
+
 import { useGSearchContext } from '../contexts/GSearchContextProvider';
 
 import Loader from './Loader';
@@ -36,6 +37,7 @@ const SearchResults = () => {
         );
     }
     if (pathname === '/images') {
+        console.log('in images route==>', results);
         return (
             <div className="flex flex-wrap justify-center items-center">
                 {results?.map(({ image, link }, idx) => (
@@ -59,10 +61,11 @@ const SearchResults = () => {
         );
     }
     if (pathname === '/news') {
+        console.log('====>', results);
         return (
             <div className="sm:px-56 flex flex-wrap justify-between items-center space-y-6">
-                {results?.map(({ id, link, source, title }) => (
-                    <div key={id} className="md:w-2/5 w-full ">
+                {results?.map(({ id, link, source, title }, idx) => (
+                    <div key={id + idx} className="md:w-2/5 w-full ">
                         <a href={link} target="_blank" rel="noreferrer " className="hover:underline ">
                             <p className="text-lg dark:text-blue-300 text-blue-700">{title}</p>
                         </a>

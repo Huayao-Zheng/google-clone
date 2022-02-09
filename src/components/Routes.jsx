@@ -1,22 +1,22 @@
 import React from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes as RenamedRoutes, Route, Navigate } from 'react-router-dom';
 
-import SearchResults from '../components/SearchResults';
-import NoMatch from '../components/NoMatch';
+import SearchResults from './SearchResults';
+import NoMatch from './NoMatch';
 
-const SearchRoutes = () => {
+const Routes = () => {
     return (
         <div className="p-4">
-            <Routes>
+            <RenamedRoutes>
                 <Route exact path="/" element={<Navigate replace to="/search" />} />
                 <Route path="/search" element={<SearchResults />} />
                 <Route path="/images" element={<SearchResults />} />
                 <Route path="/news" element={<SearchResults />} />
                 <Route path="/videos" element={<SearchResults />} />
                 <Route path="*" element={<NoMatch />} />
-            </Routes>
+            </RenamedRoutes>
         </div>
     );
 };
 
-export default SearchRoutes;
+export default Routes;
