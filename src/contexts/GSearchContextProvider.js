@@ -6,12 +6,11 @@ const API_URL = 'https://google-search3.p.rapidapi.com/api/v1';
 export const GSearchContextProvider = ({ children }) => {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
+    const [searchTerm, setSearchTerm] = useState('Elon Musk');
 
     const getResultsByType = async (type) => {
         setLoading(true);
 
-        console.log(process.env.REACT_APP_API_KEY);
         try {
             const response = await fetch(`${API_URL}${type}`, {
                 method: 'GET',
@@ -24,7 +23,14 @@ export const GSearchContextProvider = ({ children }) => {
 
             console.log(data);
 
-            setResults(data);
+            if (type.includes('/news')) {
+                setResults(data.entries);
+            } else if (type.includes('/images')) {
+                setResults(data.image_results);
+            } else {
+                setResults(data.results);
+            }
+
             setLoading(false);
         } catch (error) {
             setLoading(false);
