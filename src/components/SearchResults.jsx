@@ -37,7 +37,6 @@ const SearchResults = () => {
         );
     }
     if (pathname === '/images') {
-        console.log('in images route==>', results);
         return (
             <div className="flex flex-wrap justify-center items-center">
                 {results?.map(({ image, link }, idx) => (
@@ -45,11 +44,11 @@ const SearchResults = () => {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        key={link.title + idx}
+                        key={`${link.title}${idx}`}
                         className="overflow-hidden sm:p-3 p-5  group"
                     >
                         <img
-                            src={image.src}
+                            src={image?.src}
                             alt={link.title}
                             loading="lazy"
                             className="group-hover:scale-105 ease-linear duration-100"
@@ -61,11 +60,10 @@ const SearchResults = () => {
         );
     }
     if (pathname === '/news') {
-        console.log('====>', results);
         return (
             <div className="sm:px-56 flex flex-wrap justify-between items-center space-y-6">
                 {results?.map(({ id, link, source, title }, idx) => (
-                    <div key={id + idx} className="md:w-2/5 w-full ">
+                    <div key={`${id}${idx}`} className="md:w-2/5 w-full ">
                         <a href={link} target="_blank" rel="noreferrer " className="hover:underline ">
                             <p className="text-lg dark:text-blue-300 text-blue-700">{title}</p>
                         </a>
