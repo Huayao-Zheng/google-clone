@@ -26,7 +26,7 @@ const SearchResults = () => {
         return (
             <div className="flex flex-wrap justify-between space-y-6 sm:px-56">
                 {results?.map(({ link, title }, idx) => (
-                    <div key={title + idx} className="md:w-2/5 w-full">
+                    <div key={`${title}${idx}`} className="md:w-2/5 w-full">
                         <a href={link} target="_blank" rel="noopener noreferrer">
                             <p className="text-sm">{link.length > 30 ? `${link.substring(0, 27)}...` : link}</p>
                             <p className="text-lg hover:underline text-blue-700 dark:text-blue-300">{title}</p>
@@ -84,10 +84,17 @@ const SearchResults = () => {
     }
     if (pathname === '/videos') {
         return (
-            <div className="flex flex-wrap ">
+            <div className="flex flex-wrap justify-center">
                 {results?.map((video, index) => (
                     <div key={index} className="p-2">
-                        <ReactPlayer url={video.link} controls width="355px" height="200px" />
+                        {video?.additional_links?.[0]?.href && (
+                            <ReactPlayer
+                                url={video?.additional_links?.[0]?.href}
+                                controls
+                                width="355px"
+                                height="200px"
+                            />
+                        )}
                     </div>
                 ))}
             </div>

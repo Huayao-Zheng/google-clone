@@ -7,7 +7,6 @@ import Links from './Links';
 const SearchBar = () => {
     const [text, setText] = useState('weather');
 
-    // debouncedValue updates every
     const [debouncedValue] = useDebounce(text, 1000);
 
     const { setSearchTerm } = useGSearchContext();
@@ -17,7 +16,7 @@ const SearchBar = () => {
     }, [debouncedValue]);
 
     return (
-        <div className="relative sm:ml-48 md:ml-72 sm:mt-10 mt-3">
+        <div className="relative sm:ml-48 md:ml-72 mt-3">
             <input
                 value={text}
                 onChange={(e) => setText(e.target.value)}
