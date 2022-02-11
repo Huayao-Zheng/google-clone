@@ -21,8 +21,6 @@ export const GSearchContextProvider = ({ children }) => {
             });
             const data = await response.json();
 
-            console.log(data);
-
             // the data.entries confuses the JS with the built in method => Object.entries()
             // To avoid this, simply take the entries array out and stores it to the results state
             if (type.includes('/news')) {
